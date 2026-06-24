@@ -15,7 +15,7 @@ export default function Home() {
             poster="/images/ygbd-hero-poster.jpg"
           >
             <source
-              src="https://placeholdervideo.dev/1920x1080"
+              src="https://nciholasegner.s3.us-east-2.amazonaws.com/ygbd/ygbd-loop-2.mp4"
               type="video/mp4"
             />
           </video>
@@ -33,7 +33,9 @@ export default function Home() {
             />
 
             <h1 className={styles.heroTitle}>Your Gardens by Design</h1>
-            <p className={styles.heroTextTitle}>Your Space, Reimagined in Bloom</p>
+            <p className={styles.heroTextTitle}>
+              Your Space, Reimagined in Bloom
+            </p>
             <p className={styles.heroText}>
               Experience expert gardenscape design that transforms your garden
               into stunning outdoor living spaces.
