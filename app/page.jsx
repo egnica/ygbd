@@ -1,6 +1,7 @@
 import Image from "next/image";
 import styles from "./page.module.css";
 import OurMission from "./components/OurMissionSection/OurMissionSection";
+import FeaturedVideoSection from "./components/FeaturedVideo/FeaturedVideoSection";
 
 export default function Home() {
   return (
@@ -53,6 +54,7 @@ export default function Home() {
           </div>
         </section>
         <OurMission />
+        <FeaturedVideoSection />
         <section>
           <h2>Our Mission</h2>
         </section>
