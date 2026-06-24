@@ -1,5 +1,6 @@
 import Image from "next/image";
 import styles from "./page.module.css";
+import OurMission from "./components/OurMissionSection/OurMissionSection";
 
 export default function Home() {
   return (
@@ -50,6 +51,10 @@ export default function Home() {
               </a>
             </div>
           </div>
+        </section>
+        <OurMission />
+        <section>
+          <h2>Our Mission</h2>
         </section>
       </main>
     </div>

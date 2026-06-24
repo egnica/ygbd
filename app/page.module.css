@@ -60,7 +60,7 @@
   height: auto;
   margin-bottom: clamp(2rem, 5vw, 4rem);
   opacity: 0;
-  transform: scale(1.18);
+  transform: scale(2.18);
   animation: logoReveal 1.4s ease forwards;
   filter: drop-shadow(0 18px 35px rgba(0, 0, 0, 0.35));
 }
@@ -94,7 +94,7 @@
 
 .heroText {
   max-width: 720px;
-  margin: .5rem auto 0;
+  margin: 0.5rem auto 0;
   font-family: "Quicksand", sans-serif;
   font-size: 1rem;
   letter-spacing: 0.08em;
