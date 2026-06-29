@@ -21,7 +21,7 @@ export default function OurMissionSection() {
           </div>
 
           <p className={styles.missionLead}>
-            Custom garden design for beautiful outdoor living spaces.
+            <em> Custom garden design for beautiful outdoor living spaces.</em>
           </p>
 
           <p className={styles.missionText}>
@@ -30,8 +30,6 @@ export default function OurMissionSection() {
             with precise project execution, we deliver garden transformation
             solutions that enhance everyday living.
           </p>
-
-        
         </article>
 
         <MissionImageCarousel images={missionImages} />

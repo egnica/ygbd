@@ -1,0 +1,470 @@
+.section {
+  position: relative;
+  overflow: hidden;
+  padding: clamp(4.5rem, 8vw, 8rem) 0;
+  color: #ffffff;
+  background:
+    radial-gradient(
+      circle at 12% 18%,
+      rgba(247, 149, 190, 0.366),
+      transparent 28%
+    ),
+    radial-gradient(
+      circle at 88% 22%,
+      rgba(247, 149, 190, 0.267),
+      transparent 24%
+    ),
+    radial-gradient(
+      circle at 68% 88%,
+      rgba(247, 149, 190, 0.168),
+      transparent 30%
+    ),
+    linear-gradient(135deg, #1c1c1c 0%, #242020 45%, #1c1c1c 100%);
+}
+
+.intro {
+  width: min(900px, calc(100% - 2rem));
+  margin: 0 auto clamp(1.5rem, 3vw, 2.5rem);
+  text-align: center;
+}
+
+.eyebrow {
+  margin: 0 0 0.8rem;
+  font-family: "Quicksand", sans-serif;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.17em;
+  text-transform: uppercase;
+  color: #f795be;
+}
+
+.title {
+  margin: 0;
+  font-family: "Great Vibes", cursive;
+  font-size: clamp(3.6rem, 8vw, 7.25rem);
+  font-weight: 400;
+  line-height: 0.9;
+  color: #ffffff;
+}
+
+.copy {
+  margin: clamp(1rem, 2vw, 1.35rem) auto 0;
+  font-family: "Quicksand", sans-serif;
+  font-size: clamp(1rem, 1.5vw, 1.15rem);
+  line-height: 1.8;
+  color: rgba(255, 255, 255, 0.76);
+}
+
+.viewer {
+  position: relative;
+  width: min(1680px, calc(100vw - 0.25rem));
+  height: clamp(350px, 48vw, 640px);
+  margin: 0 auto;
+}
+
+.stage {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.galleryImage {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  display: grid;
+  place-items: center;
+  border: 0;
+  padding: 0;
+  background: transparent;
+  appearance: none;
+  cursor: pointer;
+  transform-origin: center center;
+  transition:
+    transform 760ms cubic-bezier(0.2, 0.8, 0.2, 1),
+    opacity 520ms ease,
+    filter 520ms ease,
+    box-shadow 520ms ease;
+}
+
+.image {
+  display: block;
+  pointer-events: none;
+  user-select: none;
+  object-fit: contain;
+}
+
+/* Center image keeps its natural ratio */
+
+.center {
+  z-index: 4;
+  overflow: visible;
+  opacity: 1;
+  filter: brightness(1) saturate(1);
+  transform: translate(-50%, -50%) scale(1);
+}
+
+.center .image {
+  width: auto;
+  height: auto;
+  max-width: min(78vw, 860px);
+  max-height: clamp(280px, 46vw, 600px);
+  border-radius: clamp(18px, 2vw, 30px);
+  box-shadow:
+    0 34px 100px rgba(0, 0, 0, 0.5),
+    0 0 0 1px rgba(247, 149, 190, 0.36);
+}
+
+/* Side images stay inside controlled preview boxes */
+
+.previous,
+.next {
+  z-index: 2;
+  width: clamp(300px, 40vw, 560px);
+  height: clamp(190px, 25vw, 340px);
+  overflow: hidden;
+  border-radius: clamp(18px, 2vw, 30px);
+  background: rgba(255, 255, 255, 0.055);
+  opacity: 0.42;
+  filter: brightness(0.9) saturate(0.9);
+  box-shadow: 0 24px 70px rgba(0, 0, 0, 0.36);
+}
+
+.previous {
+  transform: translate(-132%, -50%) scale(0.72);
+}
+
+.next {
+  transform: translate(32%, -50%) scale(0.72);
+}
+
+.previous .image,
+.next .image {
+  width: 100%;
+  height: 100%;
+}
+
+/* Hidden transition positions */
+
+.previousExit,
+.nextExit {
+  z-index: 1;
+  width: clamp(260px, 34vw, 500px);
+  height: clamp(170px, 22vw, 300px);
+  overflow: hidden;
+  border-radius: clamp(18px, 2vw, 30px);
+  background: rgba(255, 255, 255, 0.04);
+  opacity: 0;
+  filter: brightness(0.45) saturate(0.8);
+  pointer-events: none;
+}
+
+.previousExit {
+  transform: translate(-135%, -50%) scale(0.64);
+}
+
+.nextExit {
+  transform: translate(35%, -50%) scale(0.64);
+}
+
+.previousExit .image,
+.nextExit .image {
+  width: 100%;
+  height: 100%;
+}
+
+/* Hover states */
+
+.center:hover,
+.center:focus-visible {
+  transform: translate(-50%, -50%) scale(1.018);
+  outline: none;
+}
+
+.center:hover .image,
+.center:focus-visible .image {
+  box-shadow:
+    0 38px 112px rgba(0, 0, 0, 0.56),
+    0 0 0 1px rgba(247, 149, 190, 0.54);
+}
+
+.previous:hover,
+.previous:focus-visible {
+  opacity: 0.68;
+  filter: brightness(0.82) saturate(1);
+  transform: translate(-138%, -50%) scale(0.75);
+  box-shadow:
+    0 28px 82px rgba(0, 0, 0, 0.48),
+    0 0 0 1px rgba(247, 149, 190, 0.32);
+  outline: none;
+}
+
+.next:hover,
+.next:focus-visible {
+  opacity: 0.68;
+  filter: brightness(0.82) saturate(1);
+  transform: translate(38%, -50%) scale(0.75);
+  box-shadow:
+    0 28px 82px rgba(0, 0, 0, 0.48),
+    0 0 0 1px rgba(247, 149, 190, 0.32);
+  outline: none;
+}
+
+/* Main navigation arrows */
+
+.navButton {
+  display: grid;
+  place-content: center;
+  position: absolute;
+  top: 50%;
+  z-index: 8;
+  display: grid;
+  place-items: center;
+  width: clamp(2.7rem, 4.5vw, 3.8rem);
+  height: clamp(2.7rem, 4.5vw, 3.8rem);
+  border: 1px solid rgba(247, 149, 190, 0.38);
+  border-radius: 999px;
+  background: rgba(28, 28, 28, 0.68);
+  color: #ffffff;
+  font-size: clamp(2rem, 4vw, 3rem);
+
+  cursor: pointer;
+  transform: translateY(-50%);
+  transition:
+    background 220ms ease,
+    border-color 220ms ease,
+    transform 220ms ease;
+}
+
+.navButton:hover,
+.navButton:focus-visible {
+  background: rgba(247, 149, 190, 0.26);
+  border-color: rgba(247, 149, 190, 0.72);
+  transform: translateY(-50%) scale(1.045);
+  outline: none;
+}
+
+.previousNav {
+  left: clamp(0.5rem, 2vw, 2rem);
+}
+
+.nextNav {
+  right: clamp(0.5rem, 2vw, 2rem);
+}
+
+/* Modal */
+
+.modalOverlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: grid;
+  place-items: center;
+  padding: clamp(1rem, 3vw, 2rem);
+  background: rgba(0, 0, 0, 0.82);
+  backdrop-filter: blur(9px);
+}
+
+.modalContent {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 96vw;
+  max-width: 1500px;
+}
+
+.modalFigure {
+  display: grid;
+  place-items: center;
+  margin: 0;
+  max-width: 96vw;
+  max-height: 86vh;
+}
+
+.modalImageFrame {
+  display: grid;
+  place-items: center;
+  max-width: 94vw;
+  max-height: 82vh;
+  overflow: visible;
+  border-radius: 24px;
+  background: transparent;
+}
+
+.modalImage {
+  display: block;
+  width: auto;
+  height: auto;
+  max-width: 94vw;
+  max-height: 82vh;
+  object-fit: contain;
+  border-radius: 24px;
+  user-select: none;
+  box-shadow: 0 30px 100px rgba(0, 0, 0, 0.48);
+}
+
+.modalCaption {
+  margin-top: 1rem;
+  font-family: "Quicksand", sans-serif;
+  font-size: 1rem;
+  line-height: 1.6;
+  text-align: center;
+  color: rgba(255, 255, 255, 0.86);
+}
+
+.closeButton,
+.modalArrow {
+  border: 1px solid rgba(255, 255, 255, 0.24);
+  background: rgba(255, 255, 255, 0.12);
+  color: #ffffff;
+  backdrop-filter: blur(10px);
+  cursor: pointer;
+  transition:
+    transform 220ms ease,
+    background 220ms ease,
+    border-color 220ms ease;
+}
+
+.closeButton {
+  position: absolute;
+  top: -3.25rem;
+  right: 0;
+  width: 2.75rem;
+  height: 2.75rem;
+  border-radius: 999px;
+  font-size: 2rem;
+  line-height: 1;
+}
+
+.closeButton:hover,
+.closeButton:focus-visible {
+  background: rgba(247, 149, 190, 0.28);
+  border-color: rgba(247, 149, 190, 0.68);
+  transform: scale(1.05);
+  outline: none;
+}
+
+.modalArrow {
+  position: absolute;
+  top: 50%;
+  z-index: 2;
+  display: grid;
+  place-items: center;
+  width: clamp(2.7rem, 5vw, 4rem);
+  height: clamp(2.7rem, 5vw, 4rem);
+  border-radius: 999px;
+  font-size: clamp(2.25rem, 5vw, 4rem);
+  line-height: 1;
+  transform: translateY(-50%);
+}
+
+.modalArrow:hover,
+.modalArrow:focus-visible {
+  background: rgba(247, 149, 190, 0.28);
+  border-color: rgba(247, 149, 190, 0.68);
+  transform: translateY(-50%) scale(1.05);
+  outline: none;
+}
+
+.previousButton {
+  left: clamp(0.75rem, 2vw, 1.5rem);
+}
+
+.nextButton {
+  right: clamp(0.75rem, 2vw, 1.5rem);
+}
+
+/* Mobile */
+
+@media (max-width: 760px) {
+  .section {
+    padding: 4rem 0 4.75rem;
+  }
+
+  .intro {
+    margin-bottom: 2.5rem;
+  }
+
+  .viewer {
+    width: 100%;
+    height: clamp(340px, 96vw, 520px);
+  }
+
+  .center .image {
+    max-width: 84vw;
+    max-height: clamp(250px, 76vw, 460px);
+    border-radius: 22px;
+  }
+
+  .previous,
+  .next {
+    width: 54vw;
+    height: 36vw;
+    opacity: 0.34;
+  }
+
+  .previous {
+    transform: translate(-82%, -50%) scale(0.62);
+  }
+
+  .next {
+    transform: translate(-18%, -50%) scale(0.62);
+  }
+
+  .previousExit,
+  .nextExit {
+    width: 46vw;
+    height: 32vw;
+  }
+
+  .previousExit {
+    transform: translate(-104%, -50%) scale(0.56);
+  }
+
+  .nextExit {
+    transform: translate(4%, -50%) scale(0.56);
+  }
+
+  .center:hover,
+  .center:focus-visible {
+    transform: translate(-50%, -50%) scale(1.012);
+  }
+
+  .previous:hover,
+  .previous:focus-visible {
+    opacity: 0.5;
+    transform: translate(-82%, -50%) scale(0.64);
+  }
+
+  .next:hover,
+  .next:focus-visible {
+    opacity: 0.5;
+    transform: translate(-18%, -50%) scale(0.64);
+  }
+
+  .previousNav {
+    left: 0.75rem;
+  }
+
+  .nextNav {
+    right: 0.75rem;
+  }
+
+  .modalImageFrame {
+    height: 72vh;
+    border-radius: 20px;
+  }
+
+  .closeButton {
+    top: -3rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .galleryImage,
+  .navButton,
+  .closeButton,
+  .modalArrow {
+    transition: none;
+  }
+}

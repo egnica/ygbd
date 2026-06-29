@@ -1,4 +1,5 @@
 /* components/OurMissionSection/OurMissionSection.module.css */
+/* components/OurMissionSection/OurMissionSection.module.css */
 
 .missionSection {
   --ygbd-pink: #f795be;
@@ -6,6 +7,10 @@
   --ygbd-white: #ffffff;
 
   position: relative;
+  color: var(--ygbd-white);
+  padding: clamp(4.5rem, 9vw, 8rem) clamp(1rem, 4vw, 3rem);
+  overflow: hidden;
+
   background:
     radial-gradient(
       circle at 12% 18%,
@@ -23,10 +28,11 @@
       transparent 30%
     ),
     linear-gradient(135deg, #1c1c1c 0%, #242020 45%, #1c1c1c 100%);
+}
 
-  color: var(--ygbd-white);
-  padding: clamp(4rem, 8vw, 7rem) 5%;
-  overflow: hidden;
+.missionSection,
+.missionSection * {
+  box-sizing: border-box;
 }
 
 .missionSection::before {
@@ -47,18 +53,19 @@
 .missionInner {
   position: relative;
   z-index: 1;
-
   width: min(1120px, 100%);
   margin: 0 auto;
+
   display: grid;
-  grid-template-columns: minmax(300px, 0.8fr) minmax(0, 1.2fr);
+  grid-template-columns: minmax(280px, 0.8fr) minmax(0, 1.2fr);
   align-items: center;
   gap: clamp(2rem, 5vw, 4rem);
 }
 
 .missionCard {
-  background: var(--ygbd-pink);
-  color: var(--ygbd-dark);
+  width: 100%;
+  background-color: #f795beb3;
+  color: white;
   padding: clamp(2rem, 4vw, 3.5rem);
   border-radius: 28px;
   box-shadow: 0 28px 70px rgba(0, 0, 0, 0.28);
@@ -66,8 +73,8 @@
 
 .missionTitle {
   margin: 0;
-  font-family: "Great Vibes", handwriting;
-  font-size: clamp(4rem, 8vw, 4.5rem);
+  font-family: "Great Vibes", cursive;
+  font-size: clamp(3rem, 8vw, 3.5rem);
   font-weight: 400;
   line-height: 0.9;
 }
@@ -98,9 +105,8 @@
 .missionLead {
   margin: 0;
   font-family: "Quicksand", sans-serif;
-  font-size: clamp(1rem, 1.4vw, 1.15rem);
-  font-weight: 700;
-  line-height: 1.55;
+  font-size: clamp(0.95rem, 1.4vw, 1.15rem);
+  line-height: 1.6;
 }
 
 .missionText {
@@ -120,8 +126,10 @@
 }
 
 /* Carousel */
+
 .carouselWrap {
   width: 100%;
+  min-width: 0;
 }
 
 .carouselFrame {
@@ -250,9 +258,70 @@
   outline-offset: 4px;
 }
 
+/* Responsive */
+
+@media (max-width: 950px) {
+  .missionInner {
+    grid-template-columns: 1fr;
+    max-width: 720px;
+  }
+
+  .missionCard {
+    justify-self: center;
+  }
+
+  .missionTitle {
+    text-align: center;
+  }
+}
+
 @media (max-width: 640px) {
+  .missionSection {
+    padding: 4.5rem 1rem;
+  }
+
+  .missionInner {
+    width: 100%;
+    gap: 1.75rem;
+  }
+
+  .missionCard {
+    width: 100%;
+    max-width: none;
+    padding: 1.45rem 1.25rem 1.6rem;
+    border-radius: 22px;
+  }
+
+  .missionTitle {
+    font-size: clamp(2.75rem, 13vw, 3.25rem);
+    line-height: 0.95;
+  }
+
+  .missionDivider {
+    margin: 1rem 0 1.1rem;
+    gap: 0.65rem;
+  }
+
+  .missionLead {
+    font-size: 0.9rem;
+    line-height: 1.55;
+  }
+
+  .missionText {
+    margin-top: 1rem;
+    font-size: 0.92rem;
+    line-height: 1.65;
+  }
+
+  .carouselWrap {
+    width: 100%;
+  }
+
   .carouselFrame {
-    min-height: 380px;
+    width: 100%;
+    height: clamp(320px, 92vw, 420px);
+    aspect-ratio: auto;
+    max-height: none;
     border-radius: 24px;
   }
 
@@ -276,63 +345,25 @@
   }
 }
 
+@media (max-width: 390px) {
+  .missionSection {
+    padding-inline: 0.75rem;
+  }
+
+  .missionCard {
+    padding: 1.35rem 1rem 1.45rem;
+  }
+
+  .missionText {
+    font-size: 0.88rem;
+    line-height: 1.6;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .carouselFadeImage,
   .carouselButton,
   .pauseButton {
     transition: none;
-  }
-}
-
-/* Responsive */
-
-@media (max-width: 950px) {
-  .missionInner {
-    grid-template-columns: 1fr;
-  }
-  .missionTitle {
-    text-align: center;
-  }
-
-  .missionCard {
-    max-width: 720px;
-  }
-
-  .carouselViewport {
-    min-height: 520px;
-  }
-}
-
-@media (max-width: 640px) {
-  .missionSection {
-    padding: 4rem 1.25rem;
-  }
-
-  .missionCard {
-    border-radius: 22px;
-  }
-
-  .missionTitle {
-    font-size: clamp(3.5rem, 18vw, 5rem);
-    text-align: center;
-  }
-
-  .carouselViewport {
-    min-height: 390px;
-  }
-
-  .activeSlide {
-    width: 82%;
-    border-radius: 24px;
-  }
-
-  .previousSlide,
-  .nextSlide {
-    width: 42%;
-    height: 72%;
-  }
-
-  .carouselControls {
-    flex-wrap: wrap;
   }
 }

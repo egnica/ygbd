@@ -2,6 +2,7 @@ import Image from "next/image";
 import styles from "./page.module.css";
 import OurMission from "./components/OurMissionSection/OurMissionSection";
 import FeaturedVideoSection from "./components/FeaturedVideo/FeaturedVideoSection";
+import GardenGalleryRibbon from "./components/GardenGalleryShowcase/GardenGalleryShowcase";
 
 export default function Home() {
   return (
@@ -35,9 +36,11 @@ export default function Home() {
             />
 
             <h1 className={styles.heroTitle}>Your Gardens by Design</h1>
+            <br />
             <p className={styles.heroTextTitle}>
               Your Space, Reimagined in Bloom
             </p>
+            <br />
             <p className={styles.heroText}>
               Experience expert gardenscape design that transforms your garden
               into stunning outdoor living spaces.
@@ -54,10 +57,10 @@ export default function Home() {
           </div>
         </section>
         <OurMission />
+        <div className={styles.gardenDivider} />
         <FeaturedVideoSection />
-        <section>
-          <h2>Our Mission</h2>
-        </section>
+        <GardenGalleryRibbon />\
+
       </main>
     </div>
   );

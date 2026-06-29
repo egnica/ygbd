@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 import Image from "next/image";
 import styles from "./OurMissionSection.module.css";
 
-const AUTO_DELAY = 6000;
+const AUTO_DELAY = 4000;
 
 export default function MissionImageCarousel({ images }) {
   const [currentIndex, setCurrentIndex] = useState(0);
