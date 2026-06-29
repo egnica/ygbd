@@ -1,24 +1,23 @@
-import { Geist, Geist_Mono } from "next/font/google";
+import { Quicksand, Great_Vibes } from "next/font/google";
 import "./globals.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const quicksand = Quicksand({
   subsets: ["latin"],
+  weight: ["300", "400", "500", "600", "700"],
+  variable: "--font-quicksand",
+  display: "swap",
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const greatVibes = Great_Vibes({
   subsets: ["latin"],
+  weight: "400",
+  variable: "--font-great-vibes",
+  display: "swap",
 });
-
-export const metadata = {
-  title: "Your Gardens By Design",
-  description: "Your Gardens By Design is a landscape design company based in the Twin Cities. We specialize in creating beautiful, functional outdoor spaces that are tailored to our clients' needs and preferences.",
-};
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" className={`${geistSans.variable} ${geistMono.variable}`}>
+    <html lang="en" className={`${quicksand.variable} ${greatVibes.variable}`}>
       <body>{children}</body>
     </html>
   );

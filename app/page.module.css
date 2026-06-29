@@ -67,7 +67,7 @@
 
 .heroTitle {
   margin: 0;
-  font-family: "Great Vibes", handwriting;
+  font-family: var(--font-great-vibes), cursive;
   font-size: clamp(3.2rem, 9vw, 8.3rem);
   font-weight: 400;
   line-height: 0.95;
@@ -218,6 +218,7 @@
   .heroTitle {
     font-size: clamp(3rem, 17vw, 5.5rem);
     line-height: 6rem;
+    font-family: "Great Vibes", handwriting;
   }
 
   .heroText {
