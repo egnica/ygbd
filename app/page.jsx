@@ -3,6 +3,7 @@ import styles from "./page.module.css";
 import OurMission from "./components/OurMissionSection/OurMissionSection";
 import FeaturedVideoSection from "./components/FeaturedVideo/FeaturedVideoSection";
 import GardenGalleryRibbon from "./components/GardenGalleryShowcase/GardenGalleryShowcase";
+import TestimonialCarousel from "./components/TestimonialCarousel/TestimonialCarousel";
 
 export default function Home() {
   return (
@@ -59,8 +60,8 @@ export default function Home() {
         <OurMission />
         <div className={styles.gardenDivider} />
         <FeaturedVideoSection />
-        <GardenGalleryRibbon />\
-
+        <GardenGalleryRibbon />
+        <TestimonialCarousel />
       </main>
     </div>
   );

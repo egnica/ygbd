@@ -141,7 +141,7 @@ export default function GardenGalleryShowcase() {
     <section className={styles.section} aria-labelledby="garden-gallery-title">
       <div className={styles.intro}>
         <p className={styles.eyebrow}>Photo Gallery</p>
-
+        <br />
         <h2 id="garden-gallery-title" className={styles.title}>
           From the Garden
         </h2>
