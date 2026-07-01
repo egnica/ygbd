@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { reviews } from "../../lib/reviews";
 import styles from "./TestimonialCarousel.module.css";
 
@@ -19,35 +19,65 @@ function StarRating({ className = "" }) {
 
 export default function TestimonialCarousel() {
   const [activeIndex, setActiveIndex] = useState(0);
+  const [isPaused, setIsPaused] = useState(false);
+  const [animationDirection, setAnimationDirection] = useState("next");
+  const [isExpanded, setIsExpanded] = useState(false);
 
-  if (!reviews.length) return null;
-
-  const getReviewAt = (offset) => {
-    return reviews[(activeIndex + offset + reviews.length) % reviews.length];
-  };
-
-  const activeReview = reviews[activeIndex];
-  const previousReview = getReviewAt(-1);
-  const nextReview = getReviewAt(1);
+  const reviewCount = reviews.length;
 
   const goToPrevious = () => {
+    setIsExpanded(false);
+    setAnimationDirection("previous");
     setActiveIndex((currentIndex) =>
-      currentIndex === 0 ? reviews.length - 1 : currentIndex - 1,
+      currentIndex === 0 ? reviewCount - 1 : currentIndex - 1,
     );
   };
 
   const goToNext = () => {
+    setIsExpanded(false);
+    setAnimationDirection("next");
     setActiveIndex((currentIndex) =>
-      currentIndex === reviews.length - 1 ? 0 : currentIndex + 1,
+      currentIndex === reviewCount - 1 ? 0 : currentIndex + 1,
     );
   };
+
+  const goToReview = (index) => {
+    if (index === activeIndex) return;
+
+    setIsExpanded(false);
+    setAnimationDirection(index > activeIndex ? "next" : "previous");
+    setActiveIndex(index);
+  };
+
+  useEffect(() => {
+    if (isPaused || isExpanded || reviewCount <= 1) return;
+
+    const interval = setInterval(() => {
+      setAnimationDirection("next");
+      setActiveIndex((currentIndex) =>
+        currentIndex === reviewCount - 1 ? 0 : currentIndex + 1,
+      );
+    }, 8000);
+
+    return () => clearInterval(interval);
+  }, [isPaused, isExpanded, reviewCount]);
+
+  if (!reviewCount) return null;
+
+  const getReviewAt = (offset) => {
+    return reviews[(activeIndex + offset + reviewCount) % reviewCount];
+  };
+
+  const activeReview = reviews[activeIndex];
+  const isLongReview = activeReview.quote.length > 360;
+  const previousReview = getReviewAt(-1);
+  const nextReview = getReviewAt(1);
 
   return (
     <section className={styles.testimonialSection}>
       <div className={styles.inner}>
         <div className={styles.intro}>
-          <p className={styles.eyebrow}>reviews</p>
-          <br/>
+          <p className={styles.eyebrow}>Kind Words</p>
           <h2 className={styles.title}>Client Reflections</h2>
           <p className={styles.copy}>
             A few kind words from clients who have trusted Your Gardens by
@@ -55,7 +85,13 @@ export default function TestimonialCarousel() {
           </p>
         </div>
 
-        <div className={styles.stage}>
+        <div
+          className={styles.stage}
+          onMouseEnter={() => setIsPaused(true)}
+          onMouseLeave={() => setIsPaused(false)}
+          onFocus={() => setIsPaused(true)}
+          onBlur={() => setIsPaused(false)}
+        >
           <button
             type="button"
             className={`${styles.previewCard} ${styles.previousPreview}`}
@@ -67,13 +103,34 @@ export default function TestimonialCarousel() {
           </button>
 
           <article
-            key={activeReview.id}
-            className={styles.reviewCard}
+            key={`${activeReview.id}-${animationDirection}`}
+            className={`${styles.reviewCard} ${
+              animationDirection === "previous"
+                ? styles.fromLeft
+                : styles.fromRight
+            } ${isExpanded ? styles.expandedCard : ""}`}
             aria-live="polite"
           >
             <StarRating />
 
-            <p className={styles.quote}>“{activeReview.quote}”</p>
+            <p
+              className={`${styles.quote} ${
+                isLongReview && !isExpanded ? styles.clampedQuote : ""
+              }`}
+            >
+              “{activeReview.quote}”
+            </p>
+
+            {isLongReview && (
+              <button
+                type="button"
+                className={styles.readMoreButton}
+                onClick={() => setIsExpanded((currentValue) => !currentValue)}
+                aria-expanded={isExpanded}
+              >
+                {isExpanded ? "Show Less" : "Read More"}
+              </button>
+            )}
 
             <footer className={styles.reviewFooter}>
               <span className={styles.name}>— {activeReview.name}</span>
@@ -109,7 +166,7 @@ export default function TestimonialCarousel() {
                 className={`${styles.dot} ${
                   index === activeIndex ? styles.activeDot : ""
                 }`}
-                onClick={() => setActiveIndex(index)}
+                onClick={() => goToReview(index)}
                 aria-label={`Show testimonial from ${review.name}`}
                 aria-current={index === activeIndex ? "true" : undefined}
               />
