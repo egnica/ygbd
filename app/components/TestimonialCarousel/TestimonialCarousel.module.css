@@ -10,26 +10,7 @@
   padding: clamp(5rem, 9vw, 8rem) clamp(1rem, 4vw, 3rem)
     clamp(4.75rem, 8vw, 7rem);
   color: var(--ygbd-white);
-
-  background:
-    radial-gradient(
-      circle at 18% 22%,
-      rgba(247, 149, 190, 0.28),
-      transparent 28%
-    ),
-    radial-gradient(
-      circle at 84% 62%,
-      rgba(247, 149, 190, 0.22),
-      transparent 34%
-    ),
-    linear-gradient(
-      180deg,
-      #1c1c1c 0%,
-      #252020 14%,
-      #6d4657 34%,
-      #f8d7e6 68%,
-      #fff4fa 100%
-    );
+  background: transparent;
 }
 
 .testimonialSection,
@@ -37,7 +18,7 @@
   box-sizing: border-box;
 }
 
-.testimonialSection::before {
+/* .testimonialSection::before {
   content: "";
   position: absolute;
   inset: 0;
@@ -70,7 +51,7 @@
       transparent 44%
     );
   pointer-events: none;
-}
+} */
 
 .inner {
   position: relative;

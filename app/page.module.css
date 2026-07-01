@@ -179,6 +179,63 @@
   background-repeat: no-repeat;
 }
 
+.testimonialBridge {
+  position: relative;
+  min-height: 720px;
+  overflow: hidden;
+  background-color: #1c1c1c;
+  background:
+    radial-gradient(
+      circle at 18% 22%,
+      rgba(247, 149, 190, 0.28),
+      transparent 28%
+    ),
+    radial-gradient(
+      circle at 84% 62%,
+      rgba(247, 149, 190, 0.22),
+      transparent 34%
+    ),
+    linear-gradient(
+      180deg,
+      #1c1c1c 0%,
+      #252020 14%,
+      #6d4657 34%,
+      #c9829e 68%,
+      #b56a86 100%
+    );
+}
+
+.testimonialBridge::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url("https://nciholasegner.s3.us-east-2.amazonaws.com/ygbd/pink-flower.webp");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  opacity: 0.1;
+  filter: saturate(0.9) contrast(0.96);
+  pointer-events: none;
+}
+
+.testimonialBridge::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(28, 28, 28, 0.28) 0%,
+    rgba(28, 28, 28, 0.08) 36%,
+    rgba(255, 244, 250, 0.48) 100%
+  );
+  pointer-events: none;
+}
+
+.testimonialBridge > * {
+  position: relative;
+  z-index: 1;
+}
+
 @keyframes logoReveal {
   to {
     opacity: 1;

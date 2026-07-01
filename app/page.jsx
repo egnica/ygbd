@@ -61,7 +61,9 @@ export default function Home() {
         <div className={styles.gardenDivider} />
         <FeaturedVideoSection />
         <GardenGalleryRibbon />
-        <TestimonialCarousel />
+        <div className={styles.testimonialBridge}>
+          <TestimonialCarousel />
+        </div>
       </main>
     </div>
   );
