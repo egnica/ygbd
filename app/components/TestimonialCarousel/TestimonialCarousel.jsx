@@ -77,7 +77,8 @@ export default function TestimonialCarousel() {
     <section className={styles.testimonialSection}>
       <div className={styles.inner}>
         <div className={styles.intro}>
-          <p className={styles.eyebrow}>Kind Words</p>
+          <p className={styles.eyebrow}>Reviews</p>
+          <br />
           <h2 className={styles.title}>Client Reflections</h2>
           <p className={styles.copy}>
             A few kind words from clients who have trusted Your Gardens by
