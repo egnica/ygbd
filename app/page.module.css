@@ -265,6 +265,9 @@
   .heroContent {
     padding-top: 6rem;
   }
+  .gardenDivider {
+    height: 0;
+  }
 
   .heroLogo {
     width: clamp(120px, 40vw, 150px);
