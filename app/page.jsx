@@ -4,6 +4,7 @@ import OurMission from "./components/OurMissionSection/OurMissionSection";
 import FeaturedVideoSection from "./components/FeaturedVideo/FeaturedVideoSection";
 import GardenGalleryRibbon from "./components/GardenGalleryShowcase/GardenGalleryShowcase";
 import TestimonialCarousel from "./components/TestimonialCarousel/TestimonialCarousel";
+import ContactForm from "./components/ContactForm/ContactForm";
 
 export default function Home() {
   return (
@@ -64,6 +65,7 @@ export default function Home() {
         <div className={styles.testimonialBridge}>
           <TestimonialCarousel />
         </div>
+        <ContactForm />
       </main>
     </div>
   );
