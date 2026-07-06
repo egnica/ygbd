@@ -5,10 +5,12 @@ import FeaturedVideoSection from "./components/FeaturedVideo/FeaturedVideoSectio
 import GardenGalleryRibbon from "./components/GardenGalleryShowcase/GardenGalleryShowcase";
 import TestimonialCarousel from "./components/TestimonialCarousel/TestimonialCarousel";
 import ContactForm from "./components/ContactForm/ContactForm";
+import NavBar from "./components/NavBar/NavBar";
 
 export default function Home() {
   return (
     <div className={styles.page}>
+      <NavBar showLogo={false} />
       <main className={styles.main}>
         <section className={styles.hero}>
           <video

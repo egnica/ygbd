@@ -1,0 +1,416 @@
+.navBar {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: 1000;
+  width: 100%;
+  color: var(--nav-text-color, #ffffff);
+  background: transparent;
+  font-family: inherit;
+  transition:
+    background-color 220ms ease,
+    box-shadow 220ms ease,
+    backdrop-filter 220ms ease;
+}
+
+.navBarSolid {
+  background: rgba(28, 28, 28, 0.9);
+  box-shadow: 0 10px 35px rgba(0, 0, 0, 0.22);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+}
+
+.navInner {
+  width: min(calc(100% - 3rem), 1480px);
+  min-height: 88px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  background: transparent;
+  transition: min-height 220ms ease;
+}
+
+.navBarSolid .navInner {
+  min-height: 76px;
+}
+
+.brand {
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  color: inherit;
+  text-decoration: none;
+}
+
+.logo {
+  display: block;
+  width: auto;
+  height: 62px;
+  object-fit: contain;
+  transition: height 220ms ease;
+}
+
+.navBarSolid .logo {
+  height: 52px;
+}
+
+.brandText {
+  display: flex;
+  flex-direction: column;
+  color: inherit;
+  font-family: inherit;
+  font-size: 1.05rem;
+  font-weight: 600;
+  line-height: 1.05;
+  letter-spacing: 0.02em;
+}
+
+.brandText span {
+  margin-top: 0.25rem;
+  color: var(--nav-accent-color, #f795be);
+  font-size: 0.88rem;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.desktopNavigation {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: clamp(1.5rem, 3vw, 3rem);
+}
+
+.desktopLinkList {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  gap: clamp(1.25rem, 2vw, 2.25rem);
+  list-style: none;
+}
+
+.navLink {
+  position: relative;
+  display: inline-flex;
+  padding: 0.75rem 0;
+  color: inherit;
+  font-family: inherit;
+  font-size: 0.92rem;
+  font-weight: 500;
+  line-height: 1;
+  letter-spacing: 0.055em;
+  text-decoration: none;
+  text-shadow: 0 1px 10px rgba(0, 0, 0, 0.5);
+  text-transform: uppercase;
+  transition:
+    color 180ms ease,
+    opacity 180ms ease;
+}
+
+.navLink::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  bottom: 0.3rem;
+  left: 0;
+  height: 2px;
+  background: var(--nav-accent-color, #f795be);
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 220ms ease;
+}
+
+.navLink:hover,
+.navLink:focus-visible,
+.activeLink {
+  color: var(--nav-hover-color, #f8d7e6);
+}
+
+.navLink:hover::after,
+.navLink:focus-visible::after,
+.activeLink::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+.navLink:focus-visible,
+.ctaButton:focus-visible,
+.menuButton:focus-visible,
+.mobileNavLink:focus-visible,
+.mobileCtaButton:focus-visible,
+.brand:focus-visible {
+  outline: 3px solid var(--nav-focus-color, rgba(247, 149, 190, 0.65));
+  outline-offset: 4px;
+}
+
+.ctaButton {
+  min-height: 48px;
+  padding: 0.85rem 1.4rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--nav-cta-border, #f795be);
+  border-radius: 999px;
+  color: var(--nav-cta-text, #1c1c1c);
+  background: var(--nav-cta-background, #f795be);
+  font-family: inherit;
+  font-size: 0.86rem;
+  font-weight: 650;
+  line-height: 1;
+  letter-spacing: 0.045em;
+  text-align: center;
+  text-decoration: none;
+  text-transform: uppercase;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.16);
+  transition:
+    transform 180ms ease,
+    background-color 180ms ease,
+    border-color 180ms ease,
+    box-shadow 180ms ease;
+}
+
+.ctaButton:hover {
+  transform: translateY(-2px);
+  border-color: var(--nav-cta-hover-background, #f8d7e6);
+  background: var(--nav-cta-hover-background, #f8d7e6);
+  box-shadow: 0 16px 38px rgba(0, 0, 0, 0.24);
+}
+
+.menuButton {
+  width: 50px;
+  height: 50px;
+  margin-left: auto;
+  padding: 0;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 6px;
+  border: 1px solid var(--nav-menu-border, rgba(255, 255, 255, 0.45));
+  border-radius: 50%;
+  color: inherit;
+  background: rgba(0, 0, 0, 0.12);
+  cursor: pointer;
+  transition:
+    border-color 180ms ease,
+    background-color 180ms ease,
+    transform 180ms ease;
+}
+
+.menuButton:hover {
+  border-color: var(--nav-accent-color, #f795be);
+  background: rgba(0, 0, 0, 0.22);
+  transform: scale(1.04);
+}
+
+.menuButton span {
+  width: 21px;
+  height: 2px;
+  display: block;
+  border-radius: 999px;
+  background: currentColor;
+  transition:
+    transform 220ms ease,
+    opacity 180ms ease;
+}
+
+.menuButtonOpen span:nth-child(1) {
+  transform: translateY(8px) rotate(45deg);
+}
+
+.menuButtonOpen span:nth-child(2) {
+  opacity: 0;
+}
+
+.menuButtonOpen span:nth-child(3) {
+  transform: translateY(-8px) rotate(-45deg);
+}
+
+.mobileMenu {
+  position: absolute;
+  top: calc(100% + 0.5rem);
+  right: 1rem;
+  left: 1rem;
+  visibility: hidden;
+  opacity: 0;
+  transform: translateY(-14px);
+  pointer-events: none;
+  transition:
+    opacity 200ms ease,
+    transform 200ms ease,
+    visibility 200ms ease;
+}
+
+.mobileMenuOpen {
+  visibility: visible;
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.mobileNavigation {
+  width: min(100%, 720px);
+  max-height: calc(100vh - 115px);
+  margin-left: auto;
+  padding: 1rem;
+  overflow-y: auto;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 24px;
+  background: rgba(28, 28, 28, 0.98);
+  box-shadow: 0 24px 70px rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+}
+
+.mobileLinkList {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.mobileLinkList li + li {
+  border-top: 1px solid rgba(255, 255, 255, 0.09);
+}
+
+.mobileNavLink {
+  min-height: 62px;
+  padding: 0.75rem 0.8rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  border-radius: 12px;
+  color: #ffffff;
+  font-family: inherit;
+  font-size: 1rem;
+  font-weight: 550;
+  letter-spacing: 0.04em;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition:
+    color 180ms ease,
+    background-color 180ms ease;
+}
+
+.mobileNavLink:hover,
+.mobileNavLink:focus-visible,
+.mobileActiveLink {
+  color: var(--nav-mobile-active-color, #f8d7e6);
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.mobileLinkArrow {
+  color: var(--nav-accent-color, #f795be);
+  font-size: 1.2rem;
+  transition: transform 180ms ease;
+}
+
+.mobileNavLink:hover .mobileLinkArrow {
+  transform: translateX(4px);
+}
+
+.mobileCtaButton {
+  width: 100%;
+  min-height: 54px;
+  margin-top: 1rem;
+  padding: 0.9rem 1.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--nav-cta-border, #f795be);
+  border-radius: 999px;
+  color: var(--nav-cta-text, #1c1c1c);
+  background: var(--nav-cta-background, #f795be);
+  font-family: inherit;
+  font-size: 0.9rem;
+  font-weight: 650;
+  letter-spacing: 0.045em;
+  text-align: center;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition:
+    transform 180ms ease,
+    background-color 180ms ease;
+}
+
+.mobileCtaButton:hover {
+  transform: translateY(-2px);
+  background: var(--nav-cta-hover-background, #f8d7e6);
+}
+
+@media (max-width: 1050px) {
+  .navInner {
+    width: min(calc(100% - 2rem), 1480px);
+  }
+
+  .desktopNavigation {
+    display: none;
+  }
+
+  .menuButton {
+    display: flex;
+  }
+}
+
+@media (max-width: 640px) {
+  .navInner {
+    min-height: 76px;
+  }
+
+  .navBarSolid .navInner {
+    min-height: 70px;
+  }
+
+  .logo {
+    height: 50px;
+    max-width: 165px;
+  }
+
+  .navBarSolid .logo {
+    height: 46px;
+  }
+
+  .brandText {
+    font-size: 0.93rem;
+  }
+
+  .brandText span {
+    font-size: 0.76rem;
+  }
+
+  .menuButton {
+    width: 46px;
+    height: 46px;
+  }
+
+  .mobileMenu {
+    top: calc(100% + 0.25rem);
+    right: 0.75rem;
+    left: 0.75rem;
+  }
+
+  .mobileNavigation {
+    padding: 0.8rem;
+    border-radius: 20px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .navBar,
+  .navInner,
+  .logo,
+  .navLink,
+  .navLink::after,
+  .ctaButton,
+  .menuButton,
+  .menuButton span,
+  .mobileMenu,
+  .mobileNavLink,
+  .mobileLinkArrow,
+  .mobileCtaButton {
+    transition: none;
+  }
+}
