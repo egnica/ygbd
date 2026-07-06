@@ -5,7 +5,7 @@ export const runtime = "nodejs";
 const FROM_EMAIL = "Your Gardens by Design Website <forms@nicholasegner.com>";
 
 const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-const RECIPIENT_EMAIL = "nick@nicholasegner.com";
+const RECIPIENT_EMAIL = "bfenton@usinternet.com";
 
 function cleanSingleLine(value) {
   return String(value ?? "")
