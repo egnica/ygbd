@@ -59,6 +59,7 @@ export default function Home() {
           </div>
         </section>
         <OurMission />
+
         <div className={styles.gardenDivider} />
         <FeaturedVideoSection />
         <GardenGalleryRibbon />
