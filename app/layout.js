@@ -1,5 +1,6 @@
 import { Quicksand, Great_Vibes } from "next/font/google";
 import "./globals.css";
+import Footer from "./components/Footer/Footer";
 
 const quicksand = Quicksand({
   subsets: ["latin"],
@@ -18,7 +19,10 @@ const greatVibes = Great_Vibes({
 export default function RootLayout({ children }) {
   return (
     <html lang="en" className={`${quicksand.variable} ${greatVibes.variable}`}>
-      <body>{children}</body>
+      <body>
+        {children}
+        <Footer />
+      </body>
     </html>
   );
 }
