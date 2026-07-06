@@ -58,8 +58,20 @@ export default function NavBar({
   };
 
   useEffect(() => {
-    closeMenu();
-  }, [pathname]);
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 80);
+    };
+
+    handleScroll();
+
+    window.addEventListener("scroll", handleScroll, {
+      passive: true,
+    });
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
 
   useEffect(() => {
     const handleScroll = () => {
