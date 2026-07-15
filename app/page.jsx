@@ -60,10 +60,11 @@ export default function Home() {
             </div>
           </div>
         </section>
+        <FeaturedVideoSection />
         <OurMission />
 
         <div className={styles.gardenDivider} />
-        <FeaturedVideoSection />
+
         <GardenGalleryRibbon />
         <div className={styles.testimonialBridge}>
           <TestimonialCarousel />
