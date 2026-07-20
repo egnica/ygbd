@@ -6,13 +6,15 @@ import GardenGalleryRibbon from "./components/GardenGalleryShowcase/GardenGaller
 import TestimonialCarousel from "./components/TestimonialCarousel/TestimonialCarousel";
 import ContactForm from "./components/ContactForm/ContactForm";
 import NavBar from "./components/NavBar/NavBar";
+import HeroSection from "./components/HeroSection/HeroSection";
 
 export default function Home() {
   return (
     <div className={styles.page}>
       <NavBar showLogo={false} />
       <main className={styles.main}>
-        <section className={styles.hero}>
+        <HeroSection />
+        {/* <section className={styles.hero}>
           <video
             className={styles.heroVideo}
             autoPlay
@@ -59,7 +61,7 @@ export default function Home() {
               </a>
             </div>
           </div>
-        </section>
+        </section> */}
         <FeaturedVideoSection />
         <OurMission />
 
