@@ -56,15 +56,13 @@
 .brandOval {
   position: relative;
   isolation: isolate;
-width: clamp(370px, 68vw, 900px);
+  width: clamp(370px, 68vw, 900px);
   aspect-ratio: 2.55 / 1;
 
   display: grid;
   place-items: center;
 
   padding: clamp(1rem, 2vw, 1.75rem) clamp(2rem, 4vw, 4rem);
-
-
 
   border: 1.5px solid rgba(255, 255, 255, 0.584);
   border-radius: 50%;
@@ -126,7 +124,7 @@ width: clamp(370px, 68vw, 900px);
 
   font-family: "Chalkboard SE", "Quicksand", sans-serif;
 
-  font-size: 3.2rem;
+  font-size: 4rem;
   font-weight: 500;
   line-height: 1;
   letter-spacing: 0.08em;
@@ -283,11 +281,19 @@ width: clamp(370px, 68vw, 900px);
     transform: translateY(0);
   }
 }
+@media (max-width: 1000px) {
+  .byDesign {
+    font-size: 3rem;
+  }
+}
 
 @media (max-width: 700px) {
   .heroContent {
     width: min(100%, 540px);
     padding: 7rem 1rem 3.5rem;
+  }
+  .byDesign {
+    font-size: 2rem;
   }
 
   .brandOval {
