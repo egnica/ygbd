@@ -56,14 +56,16 @@
 .brandOval {
   position: relative;
   isolation: isolate;
-
-  width: clamp(330px, 67vw, 720px);
-  aspect-ratio: 2.15 / 1;
+width: clamp(370px, 68vw, 900px);
+  aspect-ratio: 2.55 / 1;
 
   display: grid;
   place-items: center;
 
-  padding: clamp(2.2rem, 3vw, 4.4rem);
+  padding: clamp(1rem, 2vw, 1.75rem) clamp(2rem, 4vw, 4rem);
+
+
+
   border: 1.5px solid rgba(255, 255, 255, 0.584);
   border-radius: 50%;
 
@@ -115,16 +117,16 @@
 .scriptArcText {
   fill: #ffffff;
   font-family: var(--font-great-vibes), "Great Vibes", cursive;
-  font-size: 240px;
+  font-size: 250px;
   font-weight: 400;
 }
 .byDesign {
   display: block;
-  margin-top: -15%;
+  margin-top: -17%;
 
-  font-family: "Coming Soon", "Chalkboard SE", "Trebuchet MS", sans-serif;
+  font-family: "Chalkboard SE", "Quicksand", sans-serif;
 
-  font-size: clamp(1.8rem, 6vw, 3rem);
+  font-size: 3.2rem;
   font-weight: 500;
   line-height: 1;
   letter-spacing: 0.08em;
@@ -297,7 +299,6 @@
   .scriptName {
     font-size: clamp(3.6rem, 17vw, 5.5rem);
   }
-
 
   .heroTextTitle {
     margin-top: 2.5rem;
