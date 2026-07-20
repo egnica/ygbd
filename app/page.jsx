@@ -62,9 +62,9 @@ export default function Home() {
             </div>
           </div>
         </section> */}
-        <FeaturedVideoSection />
-        <OurMission />
 
+        <OurMission />
+        <FeaturedVideoSection />
         <div className={styles.gardenDivider} />
 
         <GardenGalleryRibbon />
